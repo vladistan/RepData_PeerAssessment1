@@ -106,6 +106,20 @@ Since the values above are equal, and they do not contradict the time series plo
 
 ## Imputing missing values
 
+Unfortunately we have some missing values in our dataset.   The code below shows that we have 2304 missing measurements of steps
+
+```{r}
+summary(activity)
+```
+
+
+UNFORTUNATELY I HAVE TO ATTEND TO THE FAMILY DUTIES NOW FOR THE REST OF THE WEEKEND.  I WILL TRY TO 
+COMPLETE THIS ASSIGNMENT IF I FIND THE TIME TO DO IT TOMORROW.
+
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+
+
+
