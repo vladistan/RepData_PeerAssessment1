@@ -1,16 +1,80 @@
-# Reproducible Research: Peer Assessment 1
+Reproducible Research: Peer Assessment 1
+=========================================
+
+Vlad Korolev
+
+
+
+This document describes the analysis of daily activity given in the data file activity.csv.  The analysis includes mean total number of steps taken per day, average daily activity pattern, and difference between weekday and weekend activity patterns.  The code in this document depends on the  *knitr* and *plyr* packages.
+
+You have to install *knitr* package manually via R-Studio pacakge interface.  The code below will install and activate the *plyr* package for you.
+
+```{r}
+r <- getOption("repos")             # hard code the US repo for CRAN
+r["CRAN"] <- "http://cran.us.r-project.org"
+options(repos = r)
+rm(r)
+install.packages("plyr")
+library(plyr)
+```
+
 
 
 ## Loading and preprocessing the data
+
+First we need to load the data into R.  Make sure that the current R directory is set to the directory where this file is located.
+
+
+```{r}
+activity <- read.csv('activity.csv')
+```
+
+The activity summary is:
+
+```{rdd}
+
+str(activity)
+summary(activity)
+
+```
+
+
+```{r plot,fig.height=4}
+
+
+```
 
 
 
 ## What is mean total number of steps taken per day?
 
+To answer this question first we need to reprocess our data.  We use the plyr package function ddply to combine all measurements taken within same day into a single data point.  We will do this by applying the sum function to all values within the same day.
+
+```{r}
+dailyActivity <- ddply(activity,c("date"),function(df) sum(df$steps,na.rm = TRUE))
+```
+
+The summary analysis of the daily activity is given below
+
+```{r}
+summary(dailyActivity$V1)
+```
+
+
+The historgram of the daily activity is produced by code below:
+
+```{r}
+
+hist(dailyActivity$V1)
+
+```
+
+
+
+
 
 
 ## What is the average daily activity pattern?
-
 
 
 ## Imputing missing values
